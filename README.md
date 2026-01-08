@@ -11,7 +11,7 @@
 
 * **Zero-Touch Automation:** No menus, no clicks. ShadowMount scans your storage and installs games automatically.
 * **No Extra Apps Required:** Replaces the need for Itemzflow, webMAN, DumpRunner, DumpInstaller, WebSrv, or the Homebrew Store for mounting operations.
-* **Automated Asset Management:** Automatically handles assets (icons, background music, wallpapers), eliminating the need to copy files manually.
+* **Automated Asset Management:** Automatically handles assets eliminating the need to copy files through other tools.
 * **Hot-Swap Support:** Seamlessly handles unplugging and replugging drives without system instability.
 * **Batch Processing:** Capable of scanning and mounting dozens of games simultaneously in seconds.
 * **Smart Detection:** Intelligently detects previously mounted games on boot and skips them to ensure zero-overhead startup.
@@ -37,7 +37,7 @@ ShadowMount performs a recursive scan of **Internal Storage** and **All USB Port
 
 **Prerequisites:**
 * Jailbroken PS5 Console.
-* **Kstuff v1.6.7** loaded via UMTX/Y2JB.
+* **Kstuff v1.6.7**
 * *Note: etaHEN and Itemzflow are OPTIONAL. ShadowMount works independently.*
 
 ### Method 1: Manual Payload Injection (Port 9021)
