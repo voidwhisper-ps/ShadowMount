@@ -134,7 +134,7 @@ bool wait_for_stability_fast(const char* path, const char* name) {
         }
     }
     
-    // If we are here, files were modified recently.
+    
     log_debug("  [WAIT] %s modified %.0fs ago. Waiting...", name, diff);
     sceKernelUsleep(2000000); // Wait 2s
     return false; // Force re-scan next cycle
@@ -345,7 +345,7 @@ void scan_all_paths() {
             bool is_remount = false;
             if (installed) {
                 log_debug("  [ACTION] Remounting: %s", title_name);
-                // NOTIFICATION REMOVED FOR REMOUNT AS REQUESTED
+                // NOTIFICATION REMOVED FOR REMOUNT
                 is_remount = true;
             } else {
                 log_debug("  [ACTION] Installing: %s", title_name);
@@ -406,4 +406,5 @@ int main() {
     
     sceUserServiceTerminate();
     return 0;
+
 }
