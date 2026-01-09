@@ -297,7 +297,6 @@ bool mount_and_install(const char* src_path, const char* title_id, const char* t
 }
 
 void scan_all_paths() {
-    
     // Cache Cleaner
     for(int k=0; k<MAX_PENDING; k++) {
         if (cache[k].valid) {
@@ -363,14 +362,21 @@ void scan_all_paths() {
 }
 
 int main() {
+    // Elevate privileges
+    kernel_set_ucred_authid(-1, 0x4801000000000013L);
+
+    mkdir(LOG_DIR, 0777);
+
+    // Check lock
+    int lock = open(LOCK_FILE, O_CREAT | O_RDWR, 0666);
+    if (lock < 0 || flock(lock, LOCK_EX) < 0) { return 0; }
+
+    remove(TOAST_FILE);
+    remove(LOG_FILE);
+
     // Initialize services
     sceUserServiceInitialize(0);
     sceAppInstUtilInitialize();
-    kernel_set_ucred_authid(-1, 0x4801000000000013L);
-
-    remove(LOCK_FILE); 
-    remove(LOG_FILE); 
-    mkdir(LOG_DIR, 0777);
     
     log_debug("SHADOWMOUNT v1.3 START");
     
@@ -392,11 +398,8 @@ int main() {
     }
 
     // --- DAEMON LOOP ---
-    int lock = open(LOCK_FILE, O_CREAT | O_EXCL | O_RDWR, 0666);
-    if (lock < 0 && errno == EEXIST) { return 0; }
-
     while (true) {
-        if (access(KILL_FILE, F_OK) == 0) { remove(KILL_FILE); remove(LOCK_FILE); return 0; }
+        if (access(KILL_FILE, F_OK) == 0) { remove(KILL_FILE); break; }
         
         // Sleep FIRST since we either just finished scan above, or library was ready.
         sceKernelUsleep(SCAN_INTERVAL_US);
@@ -406,5 +409,4 @@ int main() {
     
     sceUserServiceTerminate();
     return 0;
-
 }
