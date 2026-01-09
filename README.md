@@ -1,5 +1,5 @@
 # ShadowMount (PS5)
-**v1.2 Beta by VoidWhisper**
+**v1.3 Beta by VoidWhisper**
 
 **ShadowMount** is a fully automated, background "Auto-Mounter" payload for Jailbroken PlayStation 5 consoles. It streamlines the game mounting process by eliminating the need for manual configuration or external tools (such as DumpRunner or Itemzflow). ShadowMount automatically detects, mounts, and installs game dumps from both **internal and external storage**.
 
@@ -30,6 +30,7 @@ ShadowMount performs a recursive scan of **Internal Storage** and **All USB Port
 * `/mnt/usb0/homebrew` through `/mnt/usb7/homebrew`
 * `/mnt/usb0/etaHEN/games` through `/mnt/usb7/etaHEN/games`
 * `/mnt/ext0/homebrew` & `/mnt/ext0/etaHEN/games`
+* `/mnt/ext1/homebrew` & `/mnt/ext1/etaHEN/games`
 
 ---
 

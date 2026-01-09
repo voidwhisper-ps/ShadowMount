@@ -53,6 +53,12 @@ int sceKernelSendNotificationRequest(int, notify_request_t*, size_t, int);
 const char* SCAN_PATHS[] = {
     // Internal
     "/data/homebrew", "/data/etaHEN/games",
+
+    // Extended Storage
+    "/mnt/ext0/etaHEN/homebrew", "/mnt/ext0/etaHEN/games",
+
+    // M.2 Drive
+    "/mnt/ext1/etaHEN/homebrew", "/mnt/ext1/etaHEN/games",
     
     // USB Subfolders
     "/mnt/usb0/homebrew", "/mnt/usb1/homebrew", "/mnt/usb2/homebrew", "/mnt/usb3/homebrew",
