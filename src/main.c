@@ -369,7 +369,7 @@ int main() {
 
     // Check lock
     int lock = open(LOCK_FILE, O_CREAT | O_RDWR, 0666);
-    if (lock < 0 || flock(lock, LOCK_EX) < 0) { return 0; }
+    if (lock < 0 || flock(lock, LOCK_EX | LOCK_NB) < 0) { return 0; }
 
     remove(TOAST_FILE);
     remove(LOG_FILE);
@@ -410,3 +410,4 @@ int main() {
     sceUserServiceTerminate();
     return 0;
 }
+
